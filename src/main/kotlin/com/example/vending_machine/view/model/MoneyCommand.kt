@@ -1,8 +1,8 @@
 package com.example.vending_machine.view.model
 
-import com.example.vending_machine.bag.currency.Cash
-import com.example.vending_machine.bag.currency.Coin
-import com.example.vending_machine.bag.currency.Currency
+import com.example.vending_machine.buyer.bag.currency.Cash
+import com.example.vending_machine.buyer.bag.currency.Coin
+import com.example.vending_machine.buyer.bag.currency.Currency
 
 enum class MoneyCommand(private val command: String) {
     CASH(command = "cash") {

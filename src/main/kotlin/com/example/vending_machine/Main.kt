@@ -1,23 +1,27 @@
 package com.example.vending_machine
 
+import com.example.vending_machine.buyer.Buyer
+import com.example.vending_machine.buyer.event.CurrencyStateEvent
+import com.example.vending_machine.buyer.event.InsertCurrencyEvent
+import com.example.vending_machine.buyer.event.PurchaseEvent
+import com.example.vending_machine.buyer.event.SituationEvent
+import com.example.vending_machine.machine.VendingMachine
 import com.example.vending_machine.view.InputView
-import com.example.vending_machine.view.ResultView
 
 fun main() {
-    val wallet = InputView.createWallet()
-    ResultView.printCurrentCurrency(wallet = wallet)
+    val buyer = Buyer(
+        wallet = InputView.createWallet(),
+        vendingMachine = VendingMachine(),
+        currencyStateEvent = CurrencyStateEvent(),
+    )
 
-    val vendingMachine = VendingMachine()
-    ResultView.printMachineChanges(vendingMachine = vendingMachine)
+    buyer.currentState()
 
-    while (InputView.useMachine().isProgress()) {
-        vendingMachine.insertCurrency(
-            inputCurrencyEvent = { InputView.insertMoney() },
-            takeOutCurrencyEvent = { currency -> wallet.takeOutCurrency(currency = currency) },
-            continueEvent = { InputView.continueInsertMoney().isProgress() },
-        )
-    }
+    buyer.useMachine(
+        insertCurrencyEvent = InsertCurrencyEvent(),
+        purchaseEvent = PurchaseEvent(),
+        situationEvent = SituationEvent(),
+    )
 
-    ResultView.printCurrentCurrency(wallet = wallet)
-    ResultView.printMachineChanges(vendingMachine = vendingMachine)
+    buyer.currentState()
 }

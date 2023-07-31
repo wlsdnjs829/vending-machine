@@ -1,8 +1,8 @@
-package com.example.vending_machine.bag
+package com.example.vending_machine.buyer.bag
 
-import com.example.vending_machine.bag.currency.Cash
-import com.example.vending_machine.bag.currency.Coin
-import com.example.vending_machine.bag.currency.Currency
+import com.example.vending_machine.buyer.bag.currency.Cash
+import com.example.vending_machine.buyer.bag.currency.Coin
+import com.example.vending_machine.buyer.bag.currency.Currency
 
 class Wallet(private var cash: Cash, private var coin: Coin) {
 
@@ -15,5 +15,9 @@ class Wallet(private var cash: Cash, private var coin: Coin) {
     fun takeOutCurrency(currency: Currency) = when (currency) {
         is Cash -> cash -= currency
         is Coin -> coin -= currency
+    }
+
+    fun putInCoin(coin: Coin) {
+        this.coin += coin
     }
 }

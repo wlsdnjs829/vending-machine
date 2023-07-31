@@ -1,9 +1,10 @@
 package com.example.vending_machine.view
 
-import com.example.vending_machine.bag.Wallet
-import com.example.vending_machine.bag.currency.Cash
-import com.example.vending_machine.bag.currency.Coin
-import com.example.vending_machine.bag.currency.Currency
+import com.example.vending_machine.buyer.bag.Wallet
+import com.example.vending_machine.buyer.bag.currency.Cash
+import com.example.vending_machine.buyer.bag.currency.Coin
+import com.example.vending_machine.buyer.bag.currency.Currency
+import com.example.vending_machine.machine.product.Product
 import com.example.vending_machine.view.model.MoneyCommand
 import com.example.vending_machine.view.model.PlayCommand
 
@@ -51,6 +52,19 @@ object InputView {
 
     fun continueInsertMoney(): PlayCommand {
         println(message = "\n계속 넣으시겠습니까? (y, n)")
+        return PlayCommand.valueOf(command = readln())
+    }
+
+    fun purchaseProduct(): Product {
+        val products = Product.values()
+            .joinToString { it.exposureName + "(${it.monetary.amount})" }
+
+        println(message = "\n구매할 음료를 선택하세요. ($products)")
+        return Product.valueOf(name = readln())
+    }
+
+    fun getChanges(): PlayCommand {
+        println(message = "\n거스름돈을 받으시겠습니까? (y, n)")
         return PlayCommand.valueOf(command = readln())
     }
 }

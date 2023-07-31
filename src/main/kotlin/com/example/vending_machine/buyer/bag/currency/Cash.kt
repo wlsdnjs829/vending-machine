@@ -1,4 +1,4 @@
-package com.example.vending_machine.bag.currency
+package com.example.vending_machine.buyer.bag.currency
 
 class Cash(amount: Int): Currency(amount = amount) {
 
