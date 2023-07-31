@@ -1,6 +1,8 @@
 package com.example.vending_machine.bag.currency
 
-class Cash(val amount: Int): Currency<Monetary>() {
+class Cash(amount: Int): Currency(amount = amount) {
 
     override fun exchange(): Monetary = Monetary(amount = amount * CASH_UNIT)
+
+    operator fun minus(other: Cash): Cash = Cash(amount = this.amount - other.amount)
 }

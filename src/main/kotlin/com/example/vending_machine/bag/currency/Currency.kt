@@ -1,11 +1,16 @@
 package com.example.vending_machine.bag.currency
 
-sealed class Currency<T> {
+sealed class Currency(val amount: Int) : Money() {
 
-    abstract fun exchange(): T
+    init {
+        require(value = amount >= MIN_AMOUNT) {
+            "Currency 총액은 음수일 수 없습니다. 입력값 : $amount"
+        }
+    }
+
+    abstract override fun exchange(): Monetary
 
     companion object {
-        internal const val COIN_UNIT: Int = 500
-        internal const val CASH_UNIT: Int = 1000
+        private const val MIN_AMOUNT: Int = 0
     }
 }
