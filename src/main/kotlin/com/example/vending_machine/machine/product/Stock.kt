@@ -4,7 +4,7 @@ import com.example.vending_machine.buyer.bag.currency.Monetary
 
 class Stock(val product: Product, private var count: Int) {
 
-    fun deduction() {
+    fun decrease() {
         require(value = count >= PURCHASE_COUNT) { "현재 재고가 없습니다" }
 
         count -= PURCHASE_COUNT

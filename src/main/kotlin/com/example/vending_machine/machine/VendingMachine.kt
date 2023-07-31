@@ -64,7 +64,7 @@ class VendingMachine(
         }
 
         monetary -= purchaseMonetary
-        stock.deduction()
+        stock.decrease()
 
         if (purchaseEvent.getChangesEvent()) {
             putInCoinEvent(takeOutCoin())
