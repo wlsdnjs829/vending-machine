@@ -4,15 +4,15 @@ import com.example.vending_machine.buyer.bag.currency.Monetary
 
 enum class Product(val monetary: Monetary, val exposureName: String) {
     COLA(
-        monetary = Monetary(amount = 1500),
+        monetary = Monetary(amount = 1_500),
         exposureName = "콜라",
     ),
     ZERO_COLA(
-        monetary = Monetary(amount = 1500),
+        monetary = Monetary(amount = 1_500),
         exposureName = "제로콜라",
     ),
     FANTA(
-        monetary = Monetary(amount = 1500),
+        monetary = Monetary(amount = 1_500),
         exposureName = "환타",
     ),
     WATER(
@@ -20,7 +20,7 @@ enum class Product(val monetary: Monetary, val exposureName: String) {
         exposureName = "물",
     ),
     TEJAVA(
-        monetary = Monetary(amount = 1000),
+        monetary = Monetary(amount = 1_000),
         exposureName = "데자와",
     ),
     ;
